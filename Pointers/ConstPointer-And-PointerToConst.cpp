@@ -54,9 +54,10 @@ int main(){
     std::cout << "Address of number_const through ptr_const_const: " << ptr_const_const << std::endl;
 
     *ptr_const_const = 200; // Error: Cannot modify the value pointed to by ptr_const_const
-
+        
     int another_number = 300;
     ptr_const_const = &another_number; // Error: Cannot modify the pointer itself
+    std::cout << "Address of another_number through ptr_const_const: " << ptr_const_const << std::endl;
 
     // int* const pointer: Cannot modify the pointer itself but can modify the value it points to
 
