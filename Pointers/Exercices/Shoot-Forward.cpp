@@ -11,10 +11,12 @@ and your offset is 3, then your code should prin the message exactly as shown be
 "The element 3 slots away from the beginning of the array is 3"
 
 */
+#include <iostream>
 
 int main(){
     int data[] {1,3,6,3,9,3,5,7,2,11};
+    unsigned int offset = 3;
 
-    std::cout << "The element 3 slots away from the beginning of the array is " << *(data + 3) << std::endl;
+    std::cout << "The element " << offset << " slots away from the beginning of the array is " << *(data + offset) << std::endl;
 
 }
