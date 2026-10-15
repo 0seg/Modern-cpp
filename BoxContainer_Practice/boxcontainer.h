@@ -7,6 +7,7 @@ class BoxContainer : public StreamInsertable{
     using value_type = int;
 
     static const size_t DEFAULT_CAPACITY = 30;
+    static const size_t EXPAND_SIZE = 10;
 
     public:
         BoxContainer(size_t capacity = DEFAULT_CAPACITY);
@@ -22,14 +23,12 @@ class BoxContainer : public StreamInsertable{
         size_t size( ) const {return m_size;}
         size_t capacity( ) const {return m_capacity;}
 
-        void dummy_initialize(){
+        void add(const value_type& item);
 
-            for(size_t i{}; i<10; ++i){
-                m_items[i] = i + 12;
-            }
+    private:
+        
+        void expand(size_t new_capacity);
 
-            m_size = 10;
-        }
 
     private:  
 
