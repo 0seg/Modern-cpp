@@ -35,4 +35,20 @@ int main(){
     
     std::cout << "BoxContainer: " << boxContainer << std::endl;
     
+    std::cout << "Creating a new box container and adding items from the first box container" << std::endl;
+    BoxContainer newBoxContainer;
+    newBoxContainer += boxContainer;
+    std::cout << "New BoxContainer: " << newBoxContainer << std::endl;
+
+    std::cout << "Creating a third box container and adding items from the first and second box containers" << std::endl;
+    BoxContainer thirdBoxContainer;
+    thirdBoxContainer = boxContainer + newBoxContainer;
+    std::cout << "Third BoxContainer: " << thirdBoxContainer << std::endl;
+
+    std::cout << "Creating a fourth box container and adding items from the third box container" << std::endl;
+    BoxContainer fourthBoxContainer;
+    fourthBoxContainer = thirdBoxContainer;
+    std::cout << "Fourth BoxContainer: " << fourthBoxContainer << std::endl;
+
+
 }

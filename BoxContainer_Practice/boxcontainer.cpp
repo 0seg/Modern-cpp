@@ -100,3 +100,56 @@ size_t BoxContainer::remove_all(const value_type& item) {
 
     return count;
 }
+
+
+void BoxContainer::operator+=(const BoxContainer& operand){
+    //Check if we need to expand the current box
+    if((m_size + operand.m_size) > m_capacity){
+        expand(m_size + operand.m_size);
+    }
+    
+    //Copy the items from the operand box into this box
+    for(size_t i{}; i<operand.m_size; ++i){
+        m_items[m_size + i] = operand.m_items[i];
+    }
+
+    m_size += operand.m_size;
+    
+}
+
+void BoxContainer::operator=(const BoxContainer& source){
+
+    value_type* new_items;
+
+    if(this == &source){
+        return;
+    }
+
+    if(m_capacity < source.m_capacity){
+
+        new_items = new value_type[source.m_capacity];
+        delete[] m_items;
+        m_items = new_items;
+        m_capacity = source.m_capacity;
+    }
+
+    for(size_t i{}; i<source.m_size; ++i){
+        m_items[i] = source.m_items[i];
+    }
+
+    m_size = source.m_size;
+
+}
+    
+BoxContainer operator+(const BoxContainer& left, const BoxContainer& right){
+    BoxContainer result(left.size() + right.size());
+    result += left;
+    result += right;
+    return result;
+}
+
+BoxContainer operator+(const BoxContainer& left, const BoxContainer& right) {
+    BoxContainer result(left);
+    result += right;
+    return result;
+}

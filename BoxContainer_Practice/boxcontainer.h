@@ -29,6 +29,13 @@ class BoxContainer : public StreamInsertable{
 
         bool remove_item(const value_type& item);
         size_t remove_all(const value_type& item);
+
+        //in class operators
+
+        void operator+=(const BoxContainer& operand);
+        void operator=(const BoxContainer& source);
+
+
         
     private:
         
@@ -41,3 +48,7 @@ class BoxContainer : public StreamInsertable{
         size_t m_size;
         size_t m_capacity;
 };
+
+BoxContainer operator+(const BoxContainer& left, const BoxContainer& right);
+
+#endif // BOX_CONTAINER_H
