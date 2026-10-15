@@ -21,4 +21,18 @@ int main(){
     }
 
     std::cout << "BoxContainer: " << boxContainer << std::endl;
+
+    std::cout << "Removing item 20: " << std::boolalpha << boxContainer.remove_item(20) << std::endl;
+
+    
+    for(size_t i{}; i<5; ++i){
+        boxContainer.add(10);
+    }
+
+    std::cout << "BoxContainer: " << boxContainer << std::endl;
+
+    std::cout << "Removing all items 10: " << boxContainer.remove_all(10) << std::endl;
+    
+    std::cout << "BoxContainer: " << boxContainer << std::endl;
+    
 }

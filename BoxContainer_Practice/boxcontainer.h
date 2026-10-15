@@ -25,6 +25,11 @@ class BoxContainer : public StreamInsertable{
 
         void add(const value_type& item);
 
+        //remove items
+
+        bool remove_item(const value_type& item);
+        size_t remove_all(const value_type& item);
+        
     private:
         
         void expand(size_t new_capacity);

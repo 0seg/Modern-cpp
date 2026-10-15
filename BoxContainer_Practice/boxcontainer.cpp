@@ -56,7 +56,7 @@ void BoxContainer::expand(size_t new_capacity){
     if(new_capacity <= m_capacity){
         return;
     }
-    
+
     value_type* new_items = new value_type[new_capacity];
 
 
@@ -68,4 +68,35 @@ void BoxContainer::expand(size_t new_capacity){
     m_items = new_items;
     m_capacity = new_capacity;
 
+}
+
+bool BoxContainer::remove_item(const value_type& item){
+
+    size_t index{m_capacity + 999};
+
+    for(size_t i{}; i<m_size; ++i){
+        if(m_items[i] == item){
+            index = i;
+            break;
+        }
+    }
+
+    if(index > m_size){
+        return false;
+    }
+
+    m_items[index] = m_items[m_size - 1];
+    --m_size;
+    return true;
+
+}   
+
+size_t BoxContainer::remove_all(const value_type& item) {
+    size_t count{};
+
+    while (remove_item(item)) {
+        ++count;
+    }
+
+    return count;
 }
