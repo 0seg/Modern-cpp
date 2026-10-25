@@ -31,7 +31,7 @@ public:
         return s.empty();
     }
 
-    size_t size() {
+    std::size_t size() {
         std::lock_guard<std::mutex> lock(mtx);
         return s.size();
     }
